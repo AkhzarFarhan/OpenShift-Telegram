@@ -2,6 +2,7 @@ import json
 import requests
 import time
 import urllib
+import google
 
 TOKEN = '527505826:AAGyLXoUxoxcMAnWITFa-3dt6A7v8hGE2vA'
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
@@ -40,10 +41,12 @@ def echo_all(updates):
         try:
             text = update["message"]["text"]
             chat = update["message"]["chat"]["id"]
+            for result in google.search(text):
+                send_message(result, chat)
         except:
             text = "Please send a valid text!"
             chat = update["message"]["chat"]["id"]
-        send_message(text, chat)
+            send_message(text, chat)
 
 
 def get_last_chat_id_and_text(updates):
