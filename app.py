@@ -2,7 +2,7 @@ import json
 import requests
 import time
 import urllib
-from google import search
+from googlesearch import search
 
 TOKEN = '527505826:AAGyLXoUxoxcMAnWITFa-3dt6A7v8hGE2vA'
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
