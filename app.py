@@ -1,4 +1,5 @@
 import json
+import twint
 import requests
 import time
 import urllib
@@ -60,7 +61,10 @@ def get_last_chat_id_and_text(updates):
 
 def send_message(text, chat_id):
     text = urllib.parse.quote_plus(text)
-    url = URL + "sendMessage?text={}&chat_id={}".format(text, chat_id)
+    c = twint.Config()
+    c.Search = str(text)
+    t = twint.run.Search(c)
+    url = URL + "sendMessage?text={}&chat_id={}".format(t, chat_id)
     get_url(url)
 
 
